@@ -304,14 +304,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d44612bf594b4141a53fd8901df294b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 8
+  walkSpeed: 10
   sprintSpeed: 14
-  groundDrag: 4
+  groundDrag: 5
   playerScaleCrouch: 0.5
   crouchSpeed: 6
   jumpForce: 12.5
   jumpCooldown: 0.25
   airMultiplier: 0.3
+  airDrag: 1
   maxSlideTime: 0
   slideForce: 0
   slideYScale: 0
@@ -324,6 +325,7 @@ MonoBehaviour:
     m_Bits: 256
   orientation: {fileID: 72346424}
   maxSlopeAngle: 70
+  SlopeMovementSpeed: 20
 --- !u!1 &136300703
 GameObject:
   m_ObjectHideFlags: 0

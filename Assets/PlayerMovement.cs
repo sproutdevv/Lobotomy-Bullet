@@ -24,6 +24,8 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce;
     public float jumpCooldown;
     public float airMultiplier;
+    private bool isAir;
+    public float airDrag;
 
     [Header("Sliding")]
     public float maxSlideTime;
@@ -47,6 +49,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Slope Handling")]
     public float maxSlopeAngle;
+    public float SlopeMovementSpeed;
     private RaycastHit slopeHit;
 
     float horizontalInput;
@@ -101,7 +104,7 @@ public class PlayerMovement : MonoBehaviour
         if (OnSlope())
         {
 
-            rb.AddForce(10f * moveSpeed * GetSlopeMoveDirection(), ForceMode.Force);
+            rb.AddForce(SlopeMovementSpeed * moveSpeed * GetSlopeMoveDirection(), ForceMode.Force);
 
             // turn gravity off while on slope
             if (rb.velocity.y > 0)
@@ -158,6 +161,11 @@ public class PlayerMovement : MonoBehaviour
             rb.drag = 0;
     }
 
+    private void HandleAirDrag()
+    {
+        
+    }
+
     private void Jump()
     {
         // wenn springen
@@ -171,6 +179,7 @@ public class PlayerMovement : MonoBehaviour
             rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
 
             Invoke(nameof(ResetJump), jumpCooldown);
+            rb.drag = airDrag;
         }
     }
 
